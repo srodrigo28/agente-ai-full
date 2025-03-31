@@ -26,7 +26,27 @@ model Tecnologia{
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
+  
+  projetos Projeto[]
 
   @@map("tecnologias")
   // Add other fields as needed
+}
+
+model Projeto{
+  id          Int      @id @default(autoincrement())
+  nome        String   @unique
+  descricao   String
+  tipo        String
+  imagens      String
+  nivel       String
+  repositorio String
+  destaque    Boolean @default(false)
+
+  tecnologias Tecnologia[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@map("projetos")
 }
